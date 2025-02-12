@@ -1,6 +1,7 @@
 import React from 'react'
-import {Grid2 }  
-    from '@mui/material'; 
+import {Grid2} from '@mui/material'; 
+import Card from '@mui/material/Card';
+import { Login } from './Login';
 
 export const Authentication = () => {
   return (
@@ -11,13 +12,13 @@ export const Authentication = () => {
         </Grid2>
         <Grid2 item xs={5}>
           <div className='px-20 flex flex-col justify-center h-full'>
-            <div className='card p-8'>
+            <Card className='card p-1'>
               <div className='felx flex-col item-center mb-5 space-y-1'>
-              <h1 className='log'>SocialMedia App</h1>
+              <h1 className='logo text-center'>SocialMedia</h1>
+              <p className='text-center text-sm w-[70&]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
               </div>
-              
-
-            </div>
+              <Login/>
+            </Card>
           </div>
         </Grid2>
       </Grid2>
