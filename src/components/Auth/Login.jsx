@@ -19,8 +19,8 @@ export const Login = () => {
       .required("Password is required"),
   });
 
-  const handleSubmit=()=>{
-    console.log("handle Submit");
+  const handleSubmit=(values)=>{
+    console.log("handle Submit",values);
   };
 
   return (
