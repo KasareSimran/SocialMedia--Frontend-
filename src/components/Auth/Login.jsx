@@ -1,6 +1,6 @@
 import  { useState } from 'react'
 import { ErrorMessage, Field, Formik,Form } from 'formik'
-import { TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import * as Yup from 'Yup'
 
 export const Login = () => {
@@ -12,7 +12,6 @@ export const Login = () => {
     password: "",
   };
 
- 
   const validationSchema = Yup.object({
     email: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string()
@@ -27,7 +26,7 @@ export const Login = () => {
   return (
     <>
     <Formik onSubmit={handleSubmit}
-     validationSchema={validationSchema} 
+    //  validationSchema={validationSchema} 
      initialValues={initialValues}
      >
       <Form className="space-y-5">
@@ -42,6 +41,7 @@ export const Login = () => {
           </div>
 
         </div>
+        <Button sx={{padding:".8rem 0rem"}}fullWidth type='submit' variant='contained' color='primary'>Login</Button>
 
       </Form>
     </Formik>
