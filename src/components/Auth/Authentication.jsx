@@ -1,7 +1,7 @@
 import {Grid} from '@mui/material'; 
 import Card from '@mui/material/Card';
-// import { Login } from './Login';
-import { Register } from './Register';
+import { Login } from './Login';
+// import { Register } from './Register';
 
 export const Authentication = () => {
   return (
@@ -17,8 +17,8 @@ export const Authentication = () => {
               <h1 className='logo text-center'>SocialMedia</h1>
               <p className='text-center text-sm w-[70&]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
               </div>
-              {/* <Login/> */}
-              <Register/>
+              <Login/>
+              {/* <Register/> */}
             </Card>
           </div>
         </Grid>

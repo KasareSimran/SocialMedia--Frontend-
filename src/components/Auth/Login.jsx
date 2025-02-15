@@ -2,9 +2,13 @@ import  { useState } from 'react'
 import { ErrorMessage, Field, Formik,Form } from 'formik'
 import { Button, TextField } from '@mui/material';
 import * as Yup from 'Yup'
+import { useDispatch } from 'react-redux';
+import { loginUserAction } from '../../Redux/Auth/auth.action';
 
 export const Login = () => {
   const [formValue,setFormValue]=useState();
+
+  const dispatch =useDispatch();
 
  
   const initialValues = {
@@ -21,6 +25,7 @@ export const Login = () => {
 
   const handleSubmit=(values)=>{
     console.log("handle Submit",values);
+    dispatch(loginUserAction({data:values}))
   };
 
   return (
