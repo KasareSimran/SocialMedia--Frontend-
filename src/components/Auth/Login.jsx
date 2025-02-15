@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { ErrorMessage, Field, Formik,Form } from 'formik'
 import { TextField } from '@mui/material';
 import * as Yup from 'Yup'
@@ -7,10 +7,18 @@ export const Login = () => {
   const [formValue,setFormValue]=useState();
 
  
-  const validationSchema={email:"",password:""}
-  const initialValues={email:Yup.string().email("invalid email").required('Email is required'),
-    password:Yup.string().min(6,"Password must be at least 6 characters").required("Password is required")
-  }
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+
+ 
+  const validationSchema = Yup.object({
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+  });
 
   const handleSubmit=()=>{
     console.log("handle Submit");
