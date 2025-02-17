@@ -4,11 +4,13 @@ import { Button, FormControlLabel, Radio, RadioGroup, TextField } from '@mui/mat
 import * as Yup from 'Yup'
 import { useDispatch } from 'react-redux';
 import { registerUserAction } from '../../Redux/Auth/auth.action';
+import { useNavigate } from 'react-router-dom';
 
 export const Register = () => {
   const [gender,setGender]=useState("");
 
   const dispatch=useDispatch();
+  const nevigate=useNavigate();
 
  
   const initialValues = {
@@ -78,6 +80,10 @@ export const Register = () => {
 
       </Form>
     </Formik>
+    <div className='flex gap-5 items-center justify-center pt-2'>
+      <p>If you have already account ?</p>
+      <Button onClick={()=>navigate("/login")}>Login</Button>
+    </div>
     </>
   )
 }

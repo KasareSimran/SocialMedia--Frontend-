@@ -4,11 +4,13 @@ import { Button, TextField } from '@mui/material';
 import * as Yup from 'Yup'
 import { useDispatch } from 'react-redux';
 import { loginUserAction } from '../../Redux/Auth/auth.action';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
   const [formValue,setFormValue]=useState();
 
   const dispatch =useDispatch();
+  const navigate=useNavigate();
 
  
   const initialValues = {
@@ -51,6 +53,10 @@ export const Login = () => {
 
       </Form>
     </Formik>
+    <div className='flex gap-5 items-center justify-center pt-2'>
+      <p>If you don't have account?</p>
+      <Button onClick={()=>navigate("/register")}>Register</Button>
+    </div>
     </>
   )
 }

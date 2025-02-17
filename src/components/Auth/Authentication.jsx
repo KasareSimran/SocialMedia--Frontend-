@@ -12,7 +12,7 @@ export const Authentication = () => {
           <img className='h-full w-full' src='https://cdn.pixabay.com/photo/2018/11/29/21/51/social-media-3846597_1280.png'/>
         </Grid>
         <Grid item xs={5}>
-          <div className='px-20 flex flex-col justify-center h-full'>
+          <div className='px-15 flex flex-col justify-center h-full'>
             <Card className='card p-1'>
               <div className='felx flex-col item-center mb-5 space-y-1'>
               <h1 className='logo text-center'>SocialMedia</h1>
