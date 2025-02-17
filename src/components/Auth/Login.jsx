@@ -1,25 +1,37 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { ErrorMessage, Field, Formik,Form } from 'formik'
 import { Button, TextField } from '@mui/material';
 import * as Yup from 'Yup'
+import { useDispatch } from 'react-redux';
+import { loginUserAction } from '../../Redux/Auth/auth.action';
 
 export const Login = () => {
   const [formValue,setFormValue]=useState();
 
- 
-  const validationSchema={email:"",password:""}
-  const initialValues={email:Yup.string().email("invalid email").required('Email is required'),
-    password:Yup.string().min(6,"Password must be at least 6 characters").required("Password is required")
-  }
+  const dispatch =useDispatch();
 
-  const handleSubmit=()=>{
-    console.log("handle Submit");
+ 
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+
+  const validationSchema = Yup.object({
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+  });
+
+  const handleSubmit=(values)=>{
+    console.log("handle Submit",values);
+    dispatch(loginUserAction({data:values}))
   };
 
   return (
     <>
     <Formik onSubmit={handleSubmit}
-     validationSchema={validationSchema} 
+    //  validationSchema={validationSchema} 
      initialValues={initialValues}
      >
       <Form className="space-y-5">
@@ -35,6 +47,7 @@ export const Login = () => {
 
         </div>
         <Button/>
+        <Button sx={{padding:".8rem 0rem"}}fullWidth type='submit' variant='contained' color='primary'>Login</Button>
 
       </Form>
     </Formik>
