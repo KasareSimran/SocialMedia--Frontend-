@@ -1,6 +1,9 @@
 import React from 'react'
 import { Sidebar } from '../../component/Sidebar'
 import {Route, Routes, useLocation} from 'react-router-dom'
+import { MiddlePart } from '../../component/MiddlePart/MiddlePart';
+import { Reels } from '../../component/Reels/Reels';
+import { CreateReelsForm } from '../../component/Reels/CreateReelsForm';
 
 export const Home = () => {
     const location=useLocation();
@@ -15,7 +18,10 @@ export const Home = () => {
             </Grid>
             <Grid lg={location.pathname==="/"?6:9   } item className='px-5 flex justify-center' xs={12}>
             <Routes>
-                <Route path='/' element={MiddlePart}/>
+                <Route path='/' element={<MiddlePart/>}/>
+                <Route path='/reels' element={<Reels/>}/>
+                <Route path='/create-reels' element={<CreateReelsForm/>}/>
+                <Route path='/profile/:id' element={<Profile/>}/>
             </Routes>
 
             </Grid>
