@@ -4,6 +4,7 @@ import {Route, Routes, useLocation} from 'react-router-dom'
 import { MiddlePart } from '../../component/MiddlePart/MiddlePart';
 import { Reels } from '../../component/Reels/Reels';
 import { CreateReelsForm } from '../../component/Reels/CreateReelsForm';
+import { Grid } from '@mui/material';
 
 export const Home = () => {
     const location=useLocation();
@@ -21,7 +22,7 @@ export const Home = () => {
                 <Route path='/' element={<MiddlePart/>}/>
                 <Route path='/reels' element={<Reels/>}/>
                 <Route path='/create-reels' element={<CreateReelsForm/>}/>
-                <Route path='/profile/:id' element={<Profile/>}/>
+                {/* <Route path='/profile/:id' element={<Profile/>}/> */}
             </Routes>
 
             </Grid>
