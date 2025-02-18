@@ -10,9 +10,8 @@ export const Register = () => {
   const [gender,setGender]=useState("");
 
   const dispatch=useDispatch();
-  const nevigate=useNavigate();
+  const navigate=useNavigate();
 
- 
   const initialValues = {
     firstName:"",
     lastName:"",
