@@ -9,7 +9,9 @@ export const Authentication = () => {
     <div>
       <Grid container>
         <Grid className='h-screen overflow-hidden' item xs={7}>
-          <img className='h-full w-full' src='https://cdn.pixabay.com/photo/2018/11/29/21/51/social-media-3846597_1280.png'/>
+          <img className='h-full w-full'
+          //  src='https://cdn.pixabay.com/photo/2018/11/29/21/51/social-media-3846597_1280.png'
+           src='https://www.thedeeping.eu/wp-content/uploads/2022/11/social-media.jpg'/>
         </Grid>
         <Grid item xs={5}>
           <div className='px-15 flex flex-col justify-center h-full'>
