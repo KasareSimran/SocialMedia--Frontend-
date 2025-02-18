@@ -18,6 +18,7 @@ export const Home = () => {
 
             </Grid>
             <Grid lg={location.pathname==="/"?6:9   } item className='px-5 flex justify-center' xs={12}>
+
             <Routes>
                 <Route path='/' element={<MiddlePart/>}/>
                 <Route path='/reels' element={<Reels/>}/>
