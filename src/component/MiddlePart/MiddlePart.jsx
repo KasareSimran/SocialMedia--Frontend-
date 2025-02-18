@@ -21,7 +21,7 @@ export const MiddlePart = () => {
         
       </section>
       <Card className='p-5 mt-5'>
-        <div className='flex-justify-between'>
+        <div className='flex justify-between'>
           <Avatar/>
           <input readOnly className='outline-none w-[90%] rounded-full px-5 bg-transparent border-[#3b4054] border'  type='text'/>
         </div>
