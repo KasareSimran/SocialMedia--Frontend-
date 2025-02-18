@@ -1,5 +1,4 @@
 import React from 'react'
-import { Sidebar } from '../../component/Sidebar'
 import {Route, Routes, useLocation} from 'react-router-dom'
 import { MiddlePart } from '../../component/MiddlePart/MiddlePart';
 import { Reels } from '../../component/Reels/Reels';
@@ -7,6 +6,7 @@ import { CreateReelsForm } from '../../component/Reels/CreateReelsForm';
 import { Grid } from '@mui/material';
 import { Profile } from '../Profile/Profile';
 import { HomeRight } from '../../component/HomeRight/HomeRight';
+import { Sidebar } from '../../component/Sidebar/Sidebar';
 
 export const Home = () => {
     const location=useLocation();
