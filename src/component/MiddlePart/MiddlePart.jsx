@@ -1,4 +1,4 @@
-import { Avatar, Card } from '@mui/material'
+import { Avatar, Card, IconButton } from '@mui/material'
 import React from 'react'
 import AddIcon from '@mui/icons-material/Add';
 import { StoryCircle } from './StoryCircle';
@@ -25,7 +25,13 @@ export const MiddlePart = () => {
           <Avatar/>
           <input readOnly className='outline-none w-[90%] rounded-full px-5 bg-transparent border-[#3b4054] border'  type='text'/>
         </div>
-        <div>
+        <div className='flex justify-center space-x-9 mt-5'>
+          <div className='flex items-center'>
+            <IconButton color='primary' onClick={handleOpenCreatePostModel}>
+              <ImageIcon/>
+            </IconButton>
+
+          </div>
 
         </div>
       </Card >
