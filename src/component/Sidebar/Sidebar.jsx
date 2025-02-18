@@ -1,4 +1,6 @@
 import React from 'react'
+import { navigationMenu } from './SidebarNavigation'
+import { Divider } from '@mui/material'
 
 export const Sidebar = () => {
   return (
@@ -7,10 +9,21 @@ export const Sidebar = () => {
       <div className='space-y-8 pl-5'>
 
         <div className=''>
-          <span className='logo font-bold text-xl'>SocialMedia </span>
-
+        {/* junction a hub where conversations and ideas intersect. */}
+          <span className='logo font-bold text-xl'>Junction</span> 
+        </div>
+        <div className='space-y-8'>
+          {navigationMenu.map((item)=> <div className='cursor-pointer flex space-x-3 items-center'>
+            {item.icon}
+            <p className='text-xl'>{item.title}</p>
+          </div>)}
         </div>
 
+      </div>
+
+      <div>
+        <Divider/>
+        <div></div>
       </div>
 
     </div>
