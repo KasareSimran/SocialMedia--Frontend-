@@ -1,6 +1,6 @@
 import React from 'react'
 import { navigationMenu } from './SidebarNavigation'
-import { Divider } from '@mui/material'
+import { Avatar, Divider } from '@mui/material'
 
 export const Sidebar = () => {
   return (
@@ -23,7 +23,17 @@ export const Sidebar = () => {
 
       <div>
         <Divider/>
-        <div></div>
+        <div className='pl-5 flex item-center justify-betwwen pt-5'>
+          <div className='flex items-center space-x-3'>
+          {/* https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png */}
+            <Avatar src='.'/>
+            <div>
+              <p className='font-bold'>Simran Kasare</p>
+              <p className='opacity-70'>@simranKasare</p>
+            </div>
+          </div>
+
+        </div>
       </div>
 
     </div>
