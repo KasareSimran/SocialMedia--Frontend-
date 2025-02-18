@@ -22,7 +22,7 @@ export const Home = () => {
                 <Route path='/' element={<MiddlePart/>}/>
                 <Route path='/reels' element={<Reels/>}/>
                 <Route path='/create-reels' element={<CreateReelsForm/>}/>
-                {/* <Route path='/profile/:id' element={<Profile/>}/> */}
+                <Route path='/profile/:id' element={<Profile/>}/>
             </Routes>
 
             </Grid>
