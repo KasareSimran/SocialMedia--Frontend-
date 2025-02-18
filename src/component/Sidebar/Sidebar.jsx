@@ -1,6 +1,6 @@
 import React from 'react'
 import { navigationMenu } from './SidebarNavigation'
-import { Avatar, Button, Divider, Menu, MenuItem } from '@mui/material'
+import { Avatar, Button, Card, Divider, Menu, MenuItem } from '@mui/material'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export const Sidebar = () => {
@@ -15,7 +15,7 @@ export const Sidebar = () => {
 
 
   return (
-    <div className='card h-screen flex flex-col justify-between py-5'>
+    <Card className='card h-screen flex flex-col justify-between py-5'>
 
       <div className='space-y-8 pl-5'>
 
@@ -65,12 +65,10 @@ export const Sidebar = () => {
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>
-
-
-
+ 
         </div>
       </div>
 
-    </div>
+    </Card>
   )
 }
