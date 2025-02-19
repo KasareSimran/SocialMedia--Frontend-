@@ -9,7 +9,8 @@ import { PostCard } from '../Post/PostCard';
 
 
 
-const story=[11,1,1,1]
+const story=[11,1,1,1];
+const post=[1,1,1,1,1];
 
 export const MiddlePart = () => {
 
@@ -63,8 +64,7 @@ const handleOpenCreatePostModel=()=>{
       </Card >
 
       <div className='mt-5 space-y-5'>
-        <PostCard/>
-
+        {post.map((item)=><PostCard/>)}
       </div>
 
 
