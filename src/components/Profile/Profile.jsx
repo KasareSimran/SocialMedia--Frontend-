@@ -1,10 +1,23 @@
 import { Avatar, Box, Button, Tab, Tabs } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-export const Profile = () => {
 
-  const { id } = useParams()
+const tabs=[
+  {value:"post" ,name:"Post"},
+  {value:"reels" ,name:"Reels"},
+  {value:"saved" ,name:"Saved"},
+  {value:"repost" ,name:"Repost"}
+]
+
+export const Profile = () => {
+  const [value, setValue] = useState('post');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const { id } = useParams();
   return (
     <div className='py-10 w-[70%]'>
 
@@ -44,13 +57,9 @@ export const Profile = () => {
         onChange={handleChange}
         aria-label="wrapped label tabs example"
       >
-        <Tab
-          value="one"
-          label="New Arrivals in the Longest Text of Nonfiction that should appear in the next line"
-          wrapped
-        />
-        <Tab value="two" label="Item Two" />
-        <Tab value="three" label="Item Three" />
+
+        
+        {tabs.map((item)=><Tab value={item.value} label={item.name} wrapped /> )}
       </Tabs>
     </Box>
          </section>
