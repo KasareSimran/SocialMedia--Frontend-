@@ -32,11 +32,11 @@ export const Home = () => {
             </Grid>
 
 
-            <Grid item lg={3} className='relative'>
+            {location.pathname==="/" && <Grid item lg={3} className='relative'>
                 <div className='sticky top-0 w-full'>
                     <HomeRight/>
                 </div>
-            </Grid>
+            </Grid>}
 
         </Grid>
     </div>

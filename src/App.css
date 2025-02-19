@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 #root {
-  max-width: 1590px;
+  max-width: 14590px;
   margin: 0 auto;
   padding: 0rem;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .logo {
