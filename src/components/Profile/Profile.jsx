@@ -80,10 +80,12 @@ export const Profile = () => {
 
       :value==="saved"?
       <div className='space-y-5 w-[70%] my-10'>
-        {posts.map((item)=>
+        {savedPost.map((item)=>
         <div className='border border-slate-100 rounded-md'><PostCard/></div>)}
       </div>:(
-        ""
+        <div>
+          Repost
+        </div> 
       )}
 
     </div>
