@@ -5,6 +5,7 @@ import { StoryCircle } from './StoryCircle';
 import ImageIcon from '@mui/icons-material/Image';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import ArticleIcon from '@mui/icons-material/Article';
+import { PostCard } from '../Post/PostCard';
 
 
 
@@ -60,6 +61,13 @@ const handleOpenCreatePostModel=()=>{
 
         </div>
       </Card >
+
+      <div className='mt-5 space-y-5'>
+        <PostCard/>
+
+      </div>
+
+
     </div> 
   )
 }
