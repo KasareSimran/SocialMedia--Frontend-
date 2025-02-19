@@ -5,8 +5,8 @@ import { red } from '@mui/material/colors';
 
 export const PopularUserCard = () => {
   return (
-    <div>
-          <CardHeader
+    <div >
+          <CardHeader 
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
             R
