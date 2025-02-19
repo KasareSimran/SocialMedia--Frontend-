@@ -1,7 +1,15 @@
-import { Avatar, Card, CardHeader, CardMedia, IconButton } from '@mui/material'
+import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography } from '@mui/material'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import React from 'react'
 import { red } from '@mui/material/colors';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ShareIcon from '@mui/icons-material/Share';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+
+
 
 export const PostCard = () => {
   return (
@@ -26,6 +34,38 @@ export const PostCard = () => {
         image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDo890dsxpB5UCLQFdVBWmK4qVxTrsrLEEUg&s"
         alt="Paella dish"
       />
+
+     <CardContent>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+          This impressive paella is a perfect party dish and a fun meal to cook
+          together with your guests. Add 1 cup of frozen peas along with the mussels,
+          if you like.
+        </Typography>
+      </CardContent>
+
+
+      <CardActions className='flex justify-between' disableSpacing>
+        <div>
+            <IconButton>
+                {true?<FavoriteIcon/>:<FavoriteBorderIcon/>}
+            </IconButton>
+
+            <IconButton>
+                {<ShareIcon/>}
+            </IconButton>
+
+            <IconButton>
+                {<ChatBubbleIcon/>}
+            </IconButton>
+        </div>
+
+        <div>
+            <IconButton>
+            {true?<BookmarkIcon/>:<BookmarkBorderIcon/>}
+            </IconButton>   
+        </div>
+
+      </CardActions>
 
     </Card>
   )
