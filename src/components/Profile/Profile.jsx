@@ -13,6 +13,7 @@ const tabs=[
 ]
 const posts=[1,1,1];
 const reels=[1,1];
+const savedPost=[1,1,1];
 export const Profile = () => {
   const [value, setValue] = useState('post');
 
@@ -70,10 +71,20 @@ export const Profile = () => {
       <div className='space-y-5 w-[70%] my-10'>
         {posts.map((item)=>
         <div className='border border-slate-100 rounded-md'><PostCard/></div>)}
-      </div>:value==="reels"?<div className='flex justify-center flex-wrap gap-2 my-10'> 
+      </div>
+
+      :value==="reels"?
+      <div className='flex justify-center flex-wrap gap-2 my-10'> 
         {reels.map((item)=><UserReelCard/>)}
-      </div>:""
-      }
+      </div>
+
+      :value==="saved"?
+      <div className='space-y-5 w-[70%] my-10'>
+        {posts.map((item)=>
+        <div className='border border-slate-100 rounded-md'><PostCard/></div>)}
+      </div>:(
+        ""
+      )}
 
     </div>
          </section>
