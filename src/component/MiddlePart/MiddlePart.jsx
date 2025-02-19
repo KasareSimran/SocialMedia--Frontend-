@@ -2,9 +2,20 @@ import { Avatar, Card, IconButton } from '@mui/material'
 import React from 'react'
 import AddIcon from '@mui/icons-material/Add';
 import { StoryCircle } from './StoryCircle';
+import ImageIcon from '@mui/icons-material/Image';
+import VideocamIcon from '@mui/icons-material/Videocam';
+import ArticleIcon from '@mui/icons-material/Article';
+
+
+
 const story=[11,1,1,1]
 
 export const MiddlePart = () => {
+
+const handleOpenCreatePostModel=()=>{
+  console.log("open post model"); 
+}
+
   return (
     <div className='px-20'>
       <section className='py-5 flex items-center p-5 rounded-b-md'>
@@ -30,7 +41,21 @@ export const MiddlePart = () => {
             <IconButton color='primary' onClick={handleOpenCreatePostModel}>
               <ImageIcon/>
             </IconButton>
+            <span>media</span>
+          </div>
 
+          <div className='flex items-center'>
+            <IconButton color='primary' onClick={handleOpenCreatePostModel}>
+              <VideocamIcon/>
+            </IconButton>
+            <span>video</span>
+          </div>
+
+          <div className='flex items-center'>
+            <IconButton color='primary' onClick={handleOpenCreatePostModel}>
+              <ArticleIcon/>
+            </IconButton>
+            <span>Write Article</span>
           </div>
 
         </div>
