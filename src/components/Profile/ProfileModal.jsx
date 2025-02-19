@@ -78,7 +78,7 @@ export default function ProfileModal({open,handleClose}) {
                     <TextField 
                     fullWidth 
                     id='firstName' 
-                    name='firstname'
+                    name='firstName'
                      label="First Name" 
                      value={formik.values.firstName} 
                      onChange={formik.handleChange}
@@ -87,7 +87,7 @@ export default function ProfileModal({open,handleClose}) {
                     <TextField 
                     fullWidth 
                     id='lastName' 
-                    name='lastname'
+                    name='lastName'
                      label="Last Name" 
                      value={formik.values.lastName} 
                      onChange={formik.handleChange}/> 
