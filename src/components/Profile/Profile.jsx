@@ -1,6 +1,8 @@
-import { Avatar, Box, Button, Tab, Tabs } from '@mui/material'
+import { Avatar, Box, Button, Card, Tab, Tabs } from '@mui/material'
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { PostCard } from '../../component/Post/PostCard';
+import { UserReelCard } from '../../component/Reels/UserReelCard';
 
 
 const tabs=[
@@ -9,7 +11,8 @@ const tabs=[
   {value:"saved" ,name:"Saved"},
   {value:"repost" ,name:"Repost"}
 ]
-
+const posts=[1,1,1];
+const reels=[1];
 export const Profile = () => {
   const [value, setValue] = useState('post');
 
@@ -19,7 +22,7 @@ export const Profile = () => {
 
   const { id } = useParams();
   return (
-    <div className='py-10 w-[70%]'>
+    <Card className='my-10 w-[70%]'>
 
       <div className='rounded-md'>
 
@@ -51,7 +54,7 @@ export const Profile = () => {
 
          </div>
          <section>
-         <Box sx={{ width: '100%' }}>
+         <Box sx={{ width: '100%',borderBottom:1,borderColor:"divider" }}>
       <Tabs
         value={value}
         onChange={handleChange}
@@ -62,8 +65,19 @@ export const Profile = () => {
         {tabs.map((item)=><Tab value={item.value} label={item.name} wrapped /> )}
       </Tabs>
     </Box>
+    <div className='flex justify-center'>
+      {value==="post"?
+      <div className='space-y-5 w-[70%] my-10'>
+        {posts.map((item)=>
+        <div className='border border-slate-100 rounded-md'><PostCard/></div>)}
+      </div>:value==="reels"?<div className='flex flex-wrap gap-2'> 
+        {reels.map((item)=><UserReelCard/>)}
+      </div>:""
+      }
+
+    </div>
          </section>
        </div>
-    </div>
+    </Card  >
   )
 }
