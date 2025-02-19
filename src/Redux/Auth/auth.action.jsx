@@ -73,7 +73,7 @@ export const getProfileAction=(jwt)=>async(dispatch)=>{
 export const updateProfileAction=(reqData)=>async(dispatch)=>{
     dispatch({type:UPDATE_PROFILE_REQUEST})
     try{
-        const{data}=await api.post(`${API_BASE_URL}api/users/update`,reqData)
+        const{data}=await api.post(`${API_BASE_URL}api/users`,reqData)
 
         if(data.jwt){
             localStorage.setItem("jwt",data.jwt)
