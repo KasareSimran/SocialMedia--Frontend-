@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Route, Routes, useLocation} from 'react-router-dom'
 import { MiddlePart } from '../../component/MiddlePart/MiddlePart';
 import { Reels } from '../../component/Reels/Reels';
@@ -8,9 +8,20 @@ import { Grid } from '@mui/material';
 import { Profile } from '../Profile/Profile';
 import { HomeRight } from '../../component/HomeRight/HomeRight';
 import { Sidebar } from '../../component/Sidebar/Sidebar';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProfileAction } from '../../Redux/Auth/auth.action';
 
 export const Home = () => {
+    const dispatch =useDispatch();
     const location=useLocation();
+    const jwt=localStorage.getItem("jwt")
+    const {auth} =useSelector(store=>store);
+
+    useEffect(()=>{
+        dispatch(getProfileAction(jwt))
+    })
+
+
   return (
     <div className='px-20'>
         <Grid container spacing={0}>
