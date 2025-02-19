@@ -7,8 +7,8 @@ export const loginUserAction=(loginData)=>async(dispatch)=>{
     try{
         const{data}=await axios.post(`${API_BASE_URL}auth/signin`,loginData.data)
 
-        if(data.jwt){
-            localStorage.setItem("jwt",data.jwt)
+        if(data.token){
+            localStorage.setItem("jwt",data.token)
         }
         console.log("Login is success",data)
         dispatch({type:LOGIN_SUCCESS,payload:data.jwt})
@@ -28,8 +28,8 @@ export const registerUserAction=(loginData)=>async(dispatch)=>{
     try{
         const{data}=await axios.post(`${API_BASE_URL}auth/signup`,loginData.data)
 
-        if(data.jwt){
-            localStorage.setItem("jwt",data.jwt)
+        if(data.token){
+            localStorage.setItem("jwt",data.token)
         }
         console.log("Register",data)
         dispatch({type:REGISTER_SUCCESS,payload:data.jwt})
@@ -49,7 +49,7 @@ export const getProfileAction=(jwt)=>async(dispatch)=>{
         const{data}=await axios.get(`${API_BASE_URL}api/users/profile`,
         {
             headers:{
-                "Authorization":`Bearer ${jwt}`,
+                Authorization:`Bearer ${jwt}`,
             },
         }
 
@@ -59,7 +59,7 @@ export const getProfileAction=(jwt)=>async(dispatch)=>{
             localStorage.setItem("jwt",data.jwt)
         }
         console.log("Profile..",data)
-        dispatch({type:GET_PROFILE_SUCCESS,payload:data.jwt})
+        dispatch({type:GET_PROFILE_SUCCESS,payload:data})
     }
     catch(error){
 

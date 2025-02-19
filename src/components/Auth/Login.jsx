@@ -33,7 +33,7 @@ export const Login = () => {
   return (
     <>
     <Formik onSubmit={handleSubmit}
-    //  validationSchema={validationSchema} 
+     validationSchema={validationSchema} 
      initialValues={initialValues}
      >
       <Form className="space-y-5">

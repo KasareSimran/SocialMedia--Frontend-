@@ -19,7 +19,7 @@ export const Home = () => {
 
     useEffect(()=>{
         dispatch(getProfileAction(jwt))
-    })
+    },[])
 
 
   return (
@@ -28,6 +28,7 @@ export const Home = () => {
 
 
             <Grid item xs={0}  lg={3}>
+
                 <div className='sticky top-0'>
                     <Sidebar/>
                 </div>

@@ -4,11 +4,19 @@ import './App.css'
 import { Authentication } from './components/Auth/Authentication'
 import { Message } from './components/Message/Message'
 import { Home } from './components/HomePage/Home'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { getProfileAction } from './Redux/Auth/auth.action'
 
 
 function App() {
- const {auth}=useSelector(store=>store)
+  const dispatch =useDispatch();
+  const jwt=localStorage.getItem("jwt");
+ const {auth}=useSelector(store=>store);
+  useEffect(()=>{
+         dispatch(getProfileAction(jwt))
+     },[jwt])
+ 
   
   return (
     <>
