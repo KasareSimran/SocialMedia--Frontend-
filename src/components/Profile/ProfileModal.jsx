@@ -6,7 +6,7 @@ import Modal from '@mui/material/Modal';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { updateProfileAction } from '../../Redux/Auth/auth.action';
-import { IconButton, TextField } from '@mui/material';
+import { Avatar, IconButton, TextField } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
 const style = {
@@ -69,7 +69,9 @@ export default function ProfileModal({open,handleClose}) {
                 <div>
                     <div className='h-[15rem]'>
                         <img className='w-full h-full rounded-t-md' src='https://media.istockphoto.com/id/576914218/photo/close-up-on-womans-hand-picking-up-seashells-from-beach.jpg?s=612x612&w=0&k=20&c=3WwgnEQbtUxy24S7E9z8DUI4zafRRYAJrcFbwNMRPY4='/>
-
+                    </div>
+                    <div>
+                        <Avatar className='transform -translate-y-24' sx={{width:"10rem",height:"10rem"}} src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnriMQPL-HDk20SV09Ollv-oH8hpoiyJEDyQ&s'/>
                     </div>
                 </div>
                 <div className='space-y-3'>
@@ -79,9 +81,8 @@ export default function ProfileModal({open,handleClose}) {
                     name='firstname'
                      label="First Name" 
                      value={formik.values.firstName} 
-                     onChange={formik.handleChange}/> 
-
-
+                     onChange={formik.handleChange}
+                     sx={{ mb: 2 }}/> 
 
                     <TextField 
                     fullWidth 
