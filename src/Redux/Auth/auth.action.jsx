@@ -1,6 +1,6 @@
 import axios from "axios"
-import { API_BASE_URL } from "../../config/api"
-import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS ,REGISTER_SUCCESS,REGISTER_REQUEST,REGISTER_FAILURE} from "./auth.actionType"
+import { api, API_BASE_URL } from "../../config/api"
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS ,REGISTER_SUCCESS,REGISTER_REQUEST,REGISTER_FAILURE, GET_PROFILE_SUCCESS, GET_PROFILE_FAILURE, GET_PROFILE_REQUEST, UPDATE_PROFILE_REQUEST, UPDATE_PROFILE_SUCCESS, UPDATE_PROFILE_FAILURE} from "./auth.actionType"
 
 export const loginUserAction=(loginData)=>async(dispatch)=>{
     dispatch({type:LOGIN_REQUEST})
@@ -41,3 +41,50 @@ export const registerUserAction=(loginData)=>async(dispatch)=>{
     }
 
 }  
+
+
+export const getProfileAction=(jwt)=>async(dispatch)=>{
+    dispatch({type:GET_PROFILE_REQUEST})
+    try{
+        const{data}=await axios.get(`${API_BASE_URL}api/users/profile`,
+        {
+            headers:{
+                "Authorization":`Bearer ${jwt}`,
+            },
+        }
+
+        )
+
+        if(data.jwt){
+            localStorage.setItem("jwt",data.jwt)
+        }
+        console.log("Profile..",data)
+        dispatch({type:GET_PROFILE_SUCCESS,payload:data.jwt})
+    }
+    catch(error){
+
+        console.log("-------------------",error)
+        dispatch({type:GET_PROFILE_FAILURE,payload:error})
+    }
+
+}  
+
+
+export const updateProfileAction=(reqData)=>async(dispatch)=>{
+    dispatch({type:UPDATE_PROFILE_REQUEST})
+    try{
+        const{data}=await api.post(`${API_BASE_URL}api/users/update`,reqData)
+
+        if(data.jwt){
+            localStorage.setItem("jwt",data.jwt)
+        }
+        console.log("Profile..",data)
+        dispatch({type:UPDATE_PROFILE_SUCCESS,payload:data.jwt})
+    }
+    catch(error){
+
+        console.log("-------------------",error)
+        dispatch({type:UPDATE_PROFILE_FAILURE,payload:error})
+    }
+
+} 
