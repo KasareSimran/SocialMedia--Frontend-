@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { PostCard } from '../../component/Post/PostCard';
 import { UserReelCard } from '../../component/Reels/UserReelCard';
 import { useSelector } from 'react-redux';
+import ProfileModal from './ProfileModal';
 
 
 const tabs=[
@@ -16,6 +17,11 @@ const posts=[1,1,1];
 const reels=[1,1];
 const savedPost=[1,1,1];
 export const Profile = () => {
+  const [open,setOpen]=useState(false);
+  const handleOpenProfileModal=()=>setOpen(true);
+  const handleClose=()=>setOpen(false);
+
+  
   const {auth} =useSelector(store=>store);
   const [value, setValue] = useState('post');
 
@@ -93,6 +99,9 @@ export const Profile = () => {
     </div>
          </section>
        </div>
+       <section>
+        <ProfileModal open={open} handleClose={handleClose}/>
+       </section>
     </Card  >
   )
 }
