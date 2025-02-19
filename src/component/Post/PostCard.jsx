@@ -17,8 +17,8 @@ export const PostCard = () => {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title="Simran Kasare"
+        subheader="@simranKasare"
       />
        <CardMedia
         component="img"
