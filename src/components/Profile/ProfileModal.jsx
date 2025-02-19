@@ -24,7 +24,7 @@ const style = {
   borderRadius:3,
 };
 
-export default function ProfileModal(open,handleClose) {
+export default function ProfileModal({open,handleClose}) {
     const dispatch=useDispatch();
     const handleSubmit=(values)=>{
         console.log("values",values)
@@ -42,9 +42,9 @@ export default function ProfileModal(open,handleClose) {
 
         },
     })
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+//   const [open, setOpen] = React.useState(false);
+//   const handleOpen = () => setOpen(true);
+//   const handleClose = () => setOpen(false);
 
   return (
     <div>

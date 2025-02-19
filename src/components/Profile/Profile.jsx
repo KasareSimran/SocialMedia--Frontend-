@@ -42,7 +42,7 @@ export const Profile = () => {
           <Avatar className='transform -translate-y-24' sx={{ width: "10rem", height: "10rem" }}
             src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnriMQPL-HDk20SV09Ollv-oH8hpoiyJEDyQ&s' />
 
-          {true ? <Button sx={{ borderRadius: "20px" }} variant='outlined'>Edit Profile</Button> : <Button variant='outlined'>Follow</Button>}
+          {true ? <Button sx={{ borderRadius: "20px" }} variant='outlined' onClick={handleOpenProfileModal}>Edit Profile</Button> : <Button variant='outlined'>Follow</Button>}
         </div>
 
         <div className='p-5'>
