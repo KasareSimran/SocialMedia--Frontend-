@@ -36,8 +36,7 @@ export const Sidebar = () => {
         <Divider/>
         <div className='pl-5 flex item-center justify-betwwen pt-5'>
           <div className='flex items-center space-x-3'>
-          {/* https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png */}
-            <Avatar src='.'/>
+            <Avatar src='https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png'/>
             <div>
               <p className='font-bold'>Simran Kasare</p>
               <p className='opacity-70'>@simranKasare</p>
@@ -65,9 +64,7 @@ export const Sidebar = () => {
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>
-
-
-
+ 
         </div>
       </div>
 
