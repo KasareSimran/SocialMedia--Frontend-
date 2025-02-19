@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { PostCard } from '../../component/Post/PostCard';
 import { UserReelCard } from '../../component/Reels/UserReelCard';
+import { useSelector } from 'react-redux';
 
 
 const tabs=[
@@ -15,6 +16,7 @@ const posts=[1,1,1];
 const reels=[1,1];
 const savedPost=[1,1,1];
 export const Profile = () => {
+  const {auth} =useSelector(store=>store);
   const [value, setValue] = useState('post');
 
   const handleChange = (event, newValue) => {
@@ -39,8 +41,8 @@ export const Profile = () => {
 
         <div className='p-5'>
         <div>
-          <h1 className='py-1 front-bold text-xl'>Simran Kasare</h1>
-          <p>@simranKasare</p>
+          <h1 className='py-1 front-bold text-xl'>{auth.user?.firstName+" "+auth.user?.lastName}</h1>
+          <p>@{auth.user?.firstName.toLowerCase()+""+auth.user?.lastName.toLowerCase()}</p>
         </div>
 
         <div className='flex gap-5 items-center py-3'>
