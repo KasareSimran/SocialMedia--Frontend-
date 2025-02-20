@@ -36,7 +36,12 @@ export const CreatePostModal = ({handleClose,open}) => {
         formik.setFieldValue("image",imageUrl);
     };
 
-    const handleSelectVideo=()=>{
+    const handleSelectVideo=async(e)=>{
+        setIsLoading(true);
+        const videoUrl=await uploadTocloudnary(e.target.files[0],"video")
+        setSelectedVideo(videoUrl);
+        setIsLoading(false);
+        formik.setFieldValue("video",videoUrl);
 
     }
 
@@ -94,7 +99,7 @@ const formik=useFormik({
                         <div>
                             <input type='file' accept='video/*' onChange={handleSelectVideo} style={{display:"none"}} id='video-input'/>
                             <label htmlFor='video-input'>
-                                <IconButton color='primary'>
+                                <IconButton color='primary' component="span">
                                     <VideoCallIcon />
                                 </IconButton>
                             </label>
