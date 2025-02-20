@@ -3,6 +3,7 @@ import {  useFormik } from 'formik';
 import React, { useState } from 'react'
 import ImageIcon from '@mui/icons-material/Image';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
+import { uploadTocloudnary } from '../../utils/uploadToCloudnary';
 
 
 
@@ -27,9 +28,13 @@ export const CreatePostModal = ({handleClose,open}) => {
     const [selectedVideo,setSelectedVideo]=useState();
     const [isLoading,setIsLoading]=useState(false);
 
-    const handleSelectImage=()=>{
-
-    }
+    const handleSelectImage= async(e)=>{
+        setIsLoading(true);
+        const imageUrl=await uploadTocloudnary(e.target.files[0],"image")
+        setSelectedImage(imageUrl);
+        setIsLoading(false);
+        formik.setFieldValue("image",imageUrl);
+    };
 
     const handleSelectVideo=()=>{
 
@@ -80,7 +85,7 @@ const formik=useFormik({
                         <div>
                             <input type='file' accept='image/*' onChange={handleSelectImage} style={{display:"none"}} id='image-input'/>
                             <label htmlFor='image-input'>
-                                <IconButton color='primary'>
+                                <IconButton color='primary' component="span">
                                     <ImageIcon/>
                                 </IconButton>
                             </label>
