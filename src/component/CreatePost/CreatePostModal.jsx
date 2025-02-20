@@ -1,4 +1,4 @@
-import { Avatar, Box, IconButton, Modal} from '@mui/material'
+import { Avatar, Backdrop, Box, Button, CircularProgress, IconButton, Modal} from '@mui/material'
 import {  useFormik } from 'formik';
 import React, { useState } from 'react'
 import ImageIcon from '@mui/icons-material/Image';
@@ -17,14 +17,15 @@ const style = {
     boxShadow: 24,
     p: 4,
     borderRadius:".6rem",
-    outlone:"none",
+    outline:"none",
   };
 
 export const CreatePostModal = ({handleClose,open}) => {
 
-    const formik=useFormik();
+    
     const [selectedImage,setSelectedImage]=useState();
     const [selectedVideo,setSelectedVideo]=useState();
+    const [isLoading,setIsLoading]=useState(false);
 
     const handleSelectImage=()=>{
 
@@ -33,6 +34,18 @@ export const CreatePostModal = ({handleClose,open}) => {
     const handleSelectVideo=()=>{
 
     }
+
+const formik=useFormik({
+    initialValues:{
+        caption:"",
+        image:"",
+        video:""
+    },
+
+    onSubmit:(values)=>{
+        console.log("formik values",values)
+    }
+});
 
   return (
     <div>
@@ -54,7 +67,14 @@ export const CreatePostModal = ({handleClose,open}) => {
                         </div>
                     </div>
 
-                    <textarea placeholder='Write caption..' name="caption" id="" onChange={formik.handleChange} value={formik.values.caption} rows="4"></textarea>
+                    <textarea 
+                    className='outline-none w-full mt-5 p-2 bg-transparent border border-[#3b4054] rounded-sm   '
+                    placeholder='Write caption..'  
+                    name="caption" 
+                    id="" 
+                    onChange={formik.handleChange} 
+                    value={formik.values.caption} 
+                    rows="4"></textarea>
 
                     <div className='flex space-x-5 items-center mt-5'>
                         <div>
@@ -75,10 +95,23 @@ export const CreatePostModal = ({handleClose,open}) => {
                             </label>
                             <span>Video</span>
                         </div>
-
                     </div>
+                {selectedImage && <div>
+                    <img className='h-[10rem]' src={selectedImage}/> 
+                </div>}
+
+                <div  className='flex w-full justify-end'>
+                    <Button variant='contained' type='submit' sx={{borderRadius:"1.5rem"}}>Post</Button>
+                </div>
                 </div>
             </form>
+                  <Backdrop
+                      sx={(theme) => ({ color: '#fff', zIndex: theme.zIndex.drawer + 1 })}
+                      open={isLoading}
+                      onClick={handleClose}
+                  >
+                      <CircularProgress color="inherit" />
+                  </Backdrop>
         </Box>
       </Modal>
     </div>
