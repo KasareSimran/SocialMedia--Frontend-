@@ -1,7 +1,7 @@
-import { GET_PROFILE_REQUEST, GET_PROFILE_SUCCESS, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, REGISTER_FAILURE, REGISTER_REQUEST, REGISTER_SUCCESS } from "./auth.actionType";
+import { GET_PROFILE_REQUEST, GET_PROFILE_SUCCESS, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, REGISTER_FAILURE, REGISTER_REQUEST, REGISTER_SUCCESS, UPDATE_PROFILE_FAILURE, UPDATE_PROFILE_REQUEST, UPDATE_PROFILE_SUCCESS } from "./auth.actionType";
 
 const initialState={
-    jwt:localStorage.getItem("jwt") || null,
+    jwt:null,
     error:null,
     loading:false,
     user:null
@@ -12,8 +12,9 @@ export const authReducer=(state=initialState,action)=>{
         case REGISTER_REQUEST:    
         case GET_PROFILE_REQUEST:
             localStorage.setItem("jwt", action.payload);
-            return {...state,jwt: action.payload,loading:false,error:null}   
-
+            return {...state,jwt: action.payload,loading:true,error:null} 
+             
+        case UPDATE_PROFILE_SUCCESS:        
         case GET_PROFILE_SUCCESS:
             return {...state,user:action.payload,error:null,loading:false}    
 

@@ -1,12 +1,13 @@
 import { Avatar, Card, IconButton } from '@mui/material'
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import React, { useState } from 'react'
 import AddIcon from '@mui/icons-material/Add';
 import { StoryCircle } from './StoryCircle';
 import ImageIcon from '@mui/icons-material/Image';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import ArticleIcon from '@mui/icons-material/Article';
 import { PostCard } from '../Post/PostCard';
+import { CreatePostModal } from '../CreatePost/CreatePostModal';
 
 
 
@@ -15,8 +16,13 @@ const post=[1,1,1,1,1];
 
 export const MiddlePart = () => {
 
-const handleOpenCreatePostModel=()=>{
-  console.log("open post model"); 
+  const [openCreatePostModal,setOpenCreatePostModal]=useState(false);
+
+  const handleCloseCreatePostModal=()=>setOpenCreatePostModal(false);
+ 
+const handleOpenCreatePostModal=()=>{
+  setOpenCreatePostModal(true);
+  console.log("open post model",openCreatePostModal); 
 }
 
   return (
@@ -37,25 +43,25 @@ const handleOpenCreatePostModel=()=>{
       <Card className='p-5 mt-5'>
         <div className='flex justify-between'>
           <Avatar/>
-          <input readOnly className='outline-none w-[90%] rounded-full px-5 bg-transparent border-[#3b4054] border'  type='text'/>
+          <input onClick={handleOpenCreatePostModal} readOnly className='outline-none w-[90%] rounded-full px-5 bg-transparent border-[#3b4054] border'  type='text'/>
         </div>
         <div className='flex justify-center space-x-9 mt-5'>
           <div className='flex items-center'>
-            <IconButton color='primary' onClick={handleOpenCreatePostModel}>
+            <IconButton color='primary' onClick={handleOpenCreatePostModal}>
               <ImageIcon/>
             </IconButton>
             <span>media</span>
           </div>
 
           <div className='flex items-center'>
-            <IconButton color='primary' onClick={handleOpenCreatePostModel}>
+            <IconButton color='primary' onClick={handleOpenCreatePostModal}>
               <VideocamIcon/>
             </IconButton>
             <span>video</span>
           </div>
 
           <div className='flex items-center'>
-            <IconButton color='primary' onClick={handleOpenCreatePostModel}>
+            <IconButton color='primary' onClick={handleOpenCreatePostModal}>
               <ArticleIcon/>
             </IconButton>
             <span>Write Article</span>
@@ -69,6 +75,9 @@ const handleOpenCreatePostModel=()=>{
       </div>
 
 
+      <div>
+        <CreatePostModal handleClose={handleCloseCreatePostModal} open={openCreatePostModal}/>
+      </div>
     </div> 
   )
 }
