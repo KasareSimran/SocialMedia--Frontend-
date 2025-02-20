@@ -49,7 +49,7 @@ export const likePostAction=(postId)=>async(dispatch)=>{
     try{
         const {data}=await api.get(`api/posts/like/${postId}`)
         dispatch({type:LIKE_POST_SUCCESS,payload:data})
-        console.log("Liked post ",data)
+        console.log(" post ",data)
     }catch(error){
         console.log("error....",error);
         dispatch({type:LIKE_POST_FAILURE,payload:error})

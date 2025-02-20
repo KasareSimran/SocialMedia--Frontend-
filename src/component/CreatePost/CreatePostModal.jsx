@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 import ImageIcon from '@mui/icons-material/Image';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
 import { uploadTocloudnary } from '../../utils/uploadToCloudnary';
+import { useDispatch } from 'react-redux';
+import { createPostAction } from '../../Redux/Post/post.action';
 
 
 
@@ -27,6 +29,7 @@ export const CreatePostModal = ({handleClose,open}) => {
     const [selectedImage,setSelectedImage]=useState();
     const [selectedVideo,setSelectedVideo]=useState();
     const [isLoading,setIsLoading]=useState(false);
+    const dispatch=useDispatch();
 
     const handleSelectImage= async(e)=>{
         setIsLoading(true);
@@ -54,6 +57,7 @@ const formik=useFormik({
 
     onSubmit:(values)=>{
         console.log("formik values",values)
+        dispatch(createPostAction(values))
     }
 });
 
