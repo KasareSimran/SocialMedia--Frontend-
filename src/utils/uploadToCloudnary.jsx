@@ -2,7 +2,7 @@ const cloud_name="di4snlrx6";
 const upload_preset="Junction"
 
 
-export const uploadTocloudnary = async(pics,fileType)=>{
+export const uploadToCloudnary = async(pics,fileType)=>{
 
     if(pics && fileType){
         const data=new FormData();

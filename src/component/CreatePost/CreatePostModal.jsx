@@ -3,7 +3,7 @@ import {  useFormik } from 'formik';
 import React, { useState } from 'react'
 import ImageIcon from '@mui/icons-material/Image';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
-import { uploadTocloudnary } from '../../utils/uploadToCloudnary';
+import { uploadToCloudnary } from '../../utils/uploadToCloudnary';
 import { useDispatch } from 'react-redux';
 import { createPostAction } from '../../Redux/Post/post.action';
 
@@ -33,7 +33,7 @@ export const CreatePostModal = ({handleClose,open}) => {
 
     const handleSelectImage= async(e)=>{
         setIsLoading(true);
-        const imageUrl=await uploadTocloudnary(e.target.files[0],"image")
+        const imageUrl=await uploadToCloudnary(e.target.files[0],"image")
         setSelectedImage(imageUrl);
         setIsLoading(false);
         formik.setFieldValue("image",imageUrl);
@@ -41,7 +41,7 @@ export const CreatePostModal = ({handleClose,open}) => {
 
     const handleSelectVideo=async(e)=>{
         setIsLoading(true);
-        const videoUrl=await uploadTocloudnary(e.target.files[0],"video")
+        const videoUrl=await uploadToCloudnary(e.target.files[0],"video")
         setSelectedVideo(videoUrl);
         setIsLoading(false);
         formik.setFieldValue("video",videoUrl);
