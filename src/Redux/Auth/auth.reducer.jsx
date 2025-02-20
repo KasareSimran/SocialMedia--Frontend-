@@ -11,7 +11,6 @@ export const authReducer=(state=initialState,action)=>{
         case LOGIN_REQUEST:
         case REGISTER_REQUEST:    
         case GET_PROFILE_REQUEST:
-            localStorage.setItem("jwt", action.payload);
             return {...state,jwt: action.payload,loading:true,error:null} 
              
         case UPDATE_PROFILE_SUCCESS:        

@@ -11,7 +11,7 @@ export const loginUserAction=(loginData)=>async(dispatch)=>{
             localStorage.setItem("jwt",data.token)
         }
         console.log("Login is success",data)
-        dispatch({type:LOGIN_SUCCESS,payload:data.jwt})
+        dispatch({type:LOGIN_SUCCESS,payload:data.token})
     }
     catch(error){
 
@@ -46,7 +46,7 @@ export const registerUserAction=(loginData)=>async(dispatch)=>{
 export const getProfileAction=(jwt)=>async(dispatch)=>{
     dispatch({type:GET_PROFILE_REQUEST})
     try{
-        const{data}=await axios.get(`${API_BASE_URL}api/users/profile`,
+        const{data}=await api.get(`${API_BASE_URL}api/users/profile`,
         {
             headers:{
                 Authorization:`Bearer ${jwt}`,
