@@ -6,7 +6,8 @@ const initialState={
     error:null,
     posts:[],
     like:null,
-    comments:[]
+    comments:[],
+    newComment:null
 }
 
 export const postReducer=(state=initialState,action)=>{
@@ -26,7 +27,7 @@ export const postReducer=(state=initialState,action)=>{
             return{...state,like:action.payload,posts:state.posts.map((item)=>item.id===action.payload.id?action.payload:item),loading:false,error:null }    
          
         case CREATE_COMMENT_SUCCESS:
-            return{...state,comments:[action.payload,...state.comments],loading:false,error:null}   
+            return{...state,newComment:action.payload,loading:false,error:null}   
             
         case CREATE_POST_FAILURE:
         case GET_ALL_POST_FAILURE:

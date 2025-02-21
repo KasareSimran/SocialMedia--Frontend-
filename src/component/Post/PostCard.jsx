@@ -8,7 +8,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createCommentAction } from '../../Redux/Post/post.action';
 
 
@@ -17,6 +17,7 @@ export const PostCard = ({item}) => {
   // if (!item || !item.user) return null;
   const [showComments,setShowComments]=useState(false);
   const dispatch=useDispatch();
+  const {post}=useSelector(store=>store);
 
   const handleShowComment=()=>setShowComments(!showComments);
 
@@ -99,15 +100,16 @@ export const PostCard = ({item}) => {
         <Divider/>
 
         <div className='mx-3 space-y-2 my-5 text-xs'>
-          <div className='flex justify-between items-center'>
-            <div className='flex items-center space-x-5'>
-              <Avatar sx={{height:"2rem",width:"2rem",fontSize:".8rem"}}>
-                C
-              </Avatar>
-              <p>Nice image</p>
 
-            </div>
-          </div>
+           { item.comments.map((comment)=>
+           <div className='flex items-center space-x-5'>
+              <Avatar sx={{height:"2rem",width:"2rem",fontSize:".8rem"}}>
+                {comment.user.firstName[0]}
+              </Avatar>
+              <p>{comment.content}</p>
+
+            </div>)}
+          
 
         </div>
       </section>}
