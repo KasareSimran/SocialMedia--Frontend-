@@ -28,6 +28,7 @@ export const Profile = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  
 
   const { id } = useParams();
   return (

@@ -75,7 +75,7 @@ export const PostCard = ({item}) => {
       <CardActions className='flex justify-between' disableSpacing>
         <div>
             <IconButton onClick={handleLikePost}>
-                {isLikeByReqUser(auth.user.id, item)?<FavoriteIcon/>:<FavoriteBorderIcon/>}
+                {isLikeByReqUser(auth?.user?.id, item)?<FavoriteIcon/>:<FavoriteBorderIcon/>}
             </IconButton>
 
             <IconButton>
@@ -112,7 +112,7 @@ export const PostCard = ({item}) => {
 
         <div className='mx-3 space-y-2 my-5 text-xs'>
 
-           { item.comments.map((comment)=>
+           { item.comments?.map((comment)=>
            <div className='flex items-center space-x-5'>
               <Avatar sx={{height:"2rem",width:"2rem",fontSize:".8rem"}}>
                 {comment.user.firstName[0]}
