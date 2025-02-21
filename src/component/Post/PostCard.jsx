@@ -11,7 +11,8 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 
 
-export const PostCard = () => {
+export const PostCard = ({item}) => {
+  if (!item || !item.user) return null;
   return (
     <Card className=''>
         <CardHeader
@@ -25,21 +26,19 @@ export const PostCard = () => {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Simran Kasare"
-        subheader="@simranKasare"
+        title={item.user.firstName+" "+item.user.lastName}
+        subheader={'@'+item.user.firstName.toLowerCase()+""+item.user.lastName.toLowerCase()}
       />
        <CardMedia
         component="img"
         height="194"
-        image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDo890dsxpB5UCLQFdVBWmK4qVxTrsrLEEUg&s"
+        image={item.image}
         alt="Paella dish"
       />
 
      <CardContent>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the mussels,
-          if you like.
+          {item.caption}
         </Typography>
       </CardContent>
 

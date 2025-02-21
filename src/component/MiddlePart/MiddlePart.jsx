@@ -19,6 +19,9 @@ const posts=[1,1,1,1,1];
 export const MiddlePart = () => {
   const dispatch=useDispatch();
   const {post} =useSelector(store=>store);
+
+  console.log("post store",post)
+
   const [openCreatePostModal,setOpenCreatePostModal]=useState(false);
 
   const handleCloseCreatePostModal=()=>setOpenCreatePostModal(false);
@@ -78,7 +81,7 @@ useEffect(()=>{
       </Card >
 
       <div className='mt-5 space-y-5'>
-        {post?.posts?.map((item)=><PostCard/>)}
+        {post.posts.map((item)=><PostCard item={item}/>)}
       </div>
 
 
