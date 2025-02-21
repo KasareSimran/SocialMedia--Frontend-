@@ -1,4 +1,4 @@
-import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography } from '@mui/material'
+import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, Divider, IconButton, Typography } from '@mui/material'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import React from 'react'
 import { red } from '@mui/material/colors';
@@ -13,6 +13,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 export const PostCard = ({item}) => {
   if (!item || !item.user) return null;
+  
   return (
     <Card className=''>
         <CardHeader
@@ -65,6 +66,34 @@ export const PostCard = ({item}) => {
         </div>
 
       </CardActions>
+
+     {showComment && <section>
+        <div className='flex item-center space-x-5 mx-3 my-5'>
+          <Avatar sx={{}}/>
+          <input onKeyPress={(e)=>{
+            if(e.key=="Enter"){
+              console.log('enter pressed.....',e.target.value)
+            }
+          }}
+          className='w-full outline-none bg-transparent border border-[#3b4050] rounded-full px-5 py-2' 
+          type='text'
+           placeholder='write your comment...'/>
+        </div>
+        <Divider/>
+
+        <div className='mx-3 space-y-2 my-5 text-xs'>
+          <div className='flex justify-between items-center'>
+            <div className='flex items-center space-x-5'>
+              <Avatar sx={{height:"2rem",width:"2rem",fontSize:".8rem"}}>
+                C
+              </Avatar>
+              <p>Nice image</p>
+
+            </div>
+          </div>
+
+        </div>
+      </section>}
 
     </Card>
   )
