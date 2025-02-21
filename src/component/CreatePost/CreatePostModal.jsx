@@ -5,7 +5,7 @@ import ImageIcon from '@mui/icons-material/Image';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
 import { uploadToCloudnary } from '../../utils/uploadToCloudnary';
 import { useDispatch } from 'react-redux';
-import { createPostAction } from '../../Redux/Post/post.action';
+import { createCommentAction, createPostAction } from '../../Redux/Post/post.action';
 
 
 
@@ -60,6 +60,7 @@ const formik=useFormik({
         dispatch(createPostAction(values))
     }
 });
+
 
   return (
     <div>

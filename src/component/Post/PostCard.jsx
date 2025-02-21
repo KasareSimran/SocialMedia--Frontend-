@@ -8,14 +8,27 @@ import ShareIcon from '@mui/icons-material/Share';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import { useDispatch } from 'react-redux';
+import { createCommentAction } from '../../Redux/Post/post.action';
 
 
 
 export const PostCard = ({item}) => {
   // if (!item || !item.user) return null;
   const [showComments,setShowComments]=useState(false);
+  const dispatch=useDispatch();
 
-  const handleShowComment=()=>setShowComments(!showComments)
+  const handleShowComment=()=>setShowComments(!showComments);
+
+  const handleCreateComment=(content)=>{
+    const reqData={
+      postId:item.id,
+      data:{
+        content
+      }
+    }
+    dispatch(createCommentAction(reqData))
+}
 
   return (
     <Card className=''>
@@ -75,6 +88,7 @@ export const PostCard = ({item}) => {
           <Avatar sx={{}}/>
           <input onKeyPress={(e)=>{
             if(e.key=="Enter"){
+              handleCreateComment(e.target.value)
               console.log('enter pressed.....',e.target.value)
             }
           }}
