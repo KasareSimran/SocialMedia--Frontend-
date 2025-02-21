@@ -15,7 +15,7 @@ import { isLikeByReqUser } from '../../utils/isLikeByReqUser';
 
 
 export const PostCard = ({item}) => {
-  // if (!item || !item.user) return null;
+  if (!item || !item.user) return null;
   const [showComments,setShowComments]=useState(false);
   const dispatch=useDispatch();
   const {post,auth}=useSelector(store=>store);
@@ -56,12 +56,14 @@ export const PostCard = ({item}) => {
         title={item.user.firstName+" "+item.user.lastName}
         subheader={'@'+item.user.firstName.toLowerCase()+""+item.user.lastName.toLowerCase()}
       />
-       <CardMedia
+       {/* <CardMedia
         component="img"
         height="194"
         image={item.image}
         alt="Paella dish"
-      />
+      /> */}
+
+      <img className='w-full max-h-[25rem] object-cover object-top' src={item.image}/>
 
      <CardContent>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
