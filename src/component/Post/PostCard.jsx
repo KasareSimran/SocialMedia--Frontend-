@@ -1,6 +1,6 @@
 import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, Divider, IconButton, Typography } from '@mui/material'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import React from 'react'
+import React, { useState } from 'react'
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -12,8 +12,11 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 
 export const PostCard = ({item}) => {
-  if (!item || !item.user) return null;
-  
+  // if (!item || !item.user) return null;
+  const [showComments,setShowComments]=useState(false);
+
+  const handleShowComment=()=>setShowComments(!showComments)
+
   return (
     <Card className=''>
         <CardHeader
@@ -54,7 +57,7 @@ export const PostCard = ({item}) => {
                 {<ShareIcon/>}
             </IconButton>
 
-            <IconButton>
+            <IconButton onClick={handleShowComment}>
                 {<ChatBubbleIcon/>}
             </IconButton>
         </div>
@@ -67,7 +70,7 @@ export const PostCard = ({item}) => {
 
       </CardActions>
 
-     {showComment && <section>
+     {showComments && <section>
         <div className='flex item-center space-x-5 mx-3 my-5'>
           <Avatar sx={{}}/>
           <input onKeyPress={(e)=>{
