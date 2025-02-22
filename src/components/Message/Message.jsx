@@ -43,7 +43,7 @@ export const Message = () => {
           <div>
             <div className='flex justify-between items-center border border-gray-300 p-5'>
               <div className='flex items-center space-x-3'>
-                <Avatar src='https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600'/>
+                <Avatar src='https://cdn.pixabay.com/photo/2022/02/13/11/26/grass-7010936_1280.jpg'/>
                 <p>Simran Kasare</p>
 
               </div>
