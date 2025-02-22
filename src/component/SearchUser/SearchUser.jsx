@@ -22,7 +22,7 @@ export const SearchUser = () => {
 
 
       {
-        true && <Card>
+        false && <Card>
           <CardHeader onClick={()=>{
             handleClick()
           }}
