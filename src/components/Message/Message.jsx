@@ -51,6 +51,15 @@ export const Message = () => {
               </div>
 
             </div>
+
+            <div className='hideScrollbar overflow-y-scroll h-[82vh] px-2 space-y-5 py-5'>
+              message
+            </div>
+          </div>
+
+          <div className='sticky bottom-0 border-1'>
+            input part
+
           </div>
         </Grid>
       </Grid>
