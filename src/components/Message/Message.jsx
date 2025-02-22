@@ -3,8 +3,13 @@ import React from 'react'
 import WestIcon from '@mui/icons-material/West';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 
 export const Message = () => {
+
+  const handleSelectImgae=()=>{
+    console.log("hande select image...")
+  }
   return (
     <div>
       <Grid container className='h-screen overflow-y-hidden'>
@@ -34,7 +39,7 @@ export const Message = () => {
         </Grid>
         <Grid className='h-full' item xs={9}>
           <div>
-            <div className='flex justify-between items-center border-1 p-5'>
+            <div className='flex justify-between items-center border border-gray-300 p-5'>
               <div className='flex items-center space-x-3'>
                 <Avatar src='https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600'/>
                 <p>Simran Kasare</p>
@@ -57,8 +62,22 @@ export const Message = () => {
             </div>
           </div>
 
-          <div className='sticky bottom-0 border-1'>
-            input part
+          <div className='sticky bottom-0 border border-gray-300'>
+           
+           <div className='py-5 flex items-center justify-center space-x-5'>
+            <input className='bg-transparent boorder border-[#3b40544] rounded-full w-[90%] py-3 px-5' placeholder='Type message...' type='text'/>
+            <div>
+              <input type='file' 
+              accept='image/*' 
+              onChange={handleSelectImgae} 
+              className='hidden' 
+              id='image-input'/>
+              <label htmlFor='image-input'>
+                <AddPhotoAlternateIcon/>
+              </label>
+            </div>
+
+           </div>
 
           </div>
         </Grid>
