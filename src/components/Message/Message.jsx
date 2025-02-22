@@ -4,6 +4,7 @@ import WestIcon from '@mui/icons-material/West';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import { SearchUser } from '../../component/SearchUser/SearchUser';
 
 export const Message = () => {
 
@@ -29,7 +30,7 @@ export const Message = () => {
               </div>
 
               <div className='h-full space-y-4 mt-5 overflow-y-scroll hideScrollbar'>
-                   UserChatCard
+                  <SearchUser/>
               </div>
 
             </div>
