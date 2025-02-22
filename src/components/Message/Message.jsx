@@ -1,6 +1,8 @@
-import { Avatar, Grid } from '@mui/material'
+import { Avatar, Grid, IconButton } from '@mui/material'
 import React from 'react'
 import WestIcon from '@mui/icons-material/West';
+import AddIcCallIcon from '@mui/icons-material/AddIcCall';
+import VideoCallIcon from '@mui/icons-material/VideoCall';
 
 export const Message = () => {
   return (
@@ -36,6 +38,15 @@ export const Message = () => {
               <div className='flex items-center space-x-3'>
                 <Avatar src='https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600'/>
                 <p>Simran Kasare</p>
+
+              </div>
+              <div className='flex space-x-3 '>
+                <IconButton>
+                  <AddIcCallIcon/>
+                </IconButton>
+                <IconButton>
+                  <VideoCallIcon/>
+                </IconButton>
 
               </div>
 
