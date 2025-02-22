@@ -17,7 +17,7 @@ export const UserChatCard = () => {
         </IconButton>
     }
     title="Simran kasare"
-    subheader={"simrankasare"}
+    subheader={"new message"}
          >
   
     </CardHeader>
