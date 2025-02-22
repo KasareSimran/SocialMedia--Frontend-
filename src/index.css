@@ -70,3 +70,10 @@ button:focus-visible {
 /* body {
   overflow: hidden;
 } */
+
+
+.hideScrollBar::-webkit-scrollbar{
+  width:0px;
+  display:none;
+}
+

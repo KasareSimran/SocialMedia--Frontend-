@@ -26,11 +26,11 @@ export const Message = () => {
             </div>
             <div className='h-[83vh]'>
               <div className=''>
-                searchUser
+                <SearchUser/>
               </div>
 
               <div className='h-full space-y-4 mt-5 overflow-y-scroll hideScrollbar'>
-                  <SearchUser/>
+                   UserChatCard
               </div>
 
             </div>
