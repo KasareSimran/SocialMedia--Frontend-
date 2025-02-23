@@ -1,9 +1,12 @@
 import { Avatar, Card, CardHeader } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 
 export const SearchUser = () => {
 
-  const handleSearchUser=()=>{
+  const [userName,setUserName]=useState();
+
+  const handleSearchUser=(e)=>{
+    setUserName(e.target.value)
     console.log("search user...")
   }
 
@@ -18,13 +21,12 @@ export const SearchUser = () => {
         placeholder='search user...'
         onChange={handleSearchUser}
          type='text'/>
-      </div>
 
-
-      {
-        false && <Card>
+{userName && (
+        <Card className='absolute w-full z-10 top-[4.5rem] cursor-pointer'>
           <CardHeader onClick={()=>{
             handleClick()
+            setUserName("");
           }}
           avatar={<Avatar src='https://cdn.pixabay.com/photo/2025/02/11/16/41/swans-9399436_1280.jpg'/>}
           title='Simran Kasare'
@@ -35,7 +37,11 @@ export const SearchUser = () => {
   
 
         </Card>
-      }
+      )}
+      </div>
+
+
+     
 
     </div>
   )
