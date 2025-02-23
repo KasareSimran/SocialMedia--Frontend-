@@ -1,6 +1,6 @@
 import axios from "axios"
 import { api, API_BASE_URL } from "../../config/api"
-import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS ,REGISTER_SUCCESS,REGISTER_REQUEST,REGISTER_FAILURE, GET_PROFILE_SUCCESS, GET_PROFILE_FAILURE, GET_PROFILE_REQUEST, UPDATE_PROFILE_REQUEST, UPDATE_PROFILE_SUCCESS, UPDATE_PROFILE_FAILURE} from "./auth.actionType"
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS ,REGISTER_SUCCESS,REGISTER_REQUEST,REGISTER_FAILURE, GET_PROFILE_SUCCESS, GET_PROFILE_FAILURE, GET_PROFILE_REQUEST, UPDATE_PROFILE_REQUEST, UPDATE_PROFILE_SUCCESS, UPDATE_PROFILE_FAILURE, SEARCG_USER_REQUEST, SEARCG_USER_SUCCESS, SEARCG_USER_FAILURE} from "./auth.actionType"
 
 export const loginUserAction=(loginData)=>async(dispatch)=>{
     dispatch({type:LOGIN_REQUEST})
@@ -88,3 +88,21 @@ export const updateProfileAction=(reqData)=>async(dispatch)=>{
     }
 
 } 
+
+
+
+export const searchUser=(query)=>async(dispatch)=>{
+    dispatch({type:SEARCG_USER_REQUEST})
+    try{
+        const{data}=await api.get(`api/users/search?query=${query}`)
+  
+        console.log("search user...",data)
+        dispatch({type:SEARCG_USER_SUCCESS,payload:data})
+    }
+    catch(error){
+
+        console.log("-------------------",error)
+        dispatch({type:SEARCG_USER_FAILURE,payload:error})
+    }
+
+}  
