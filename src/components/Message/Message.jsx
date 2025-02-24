@@ -11,6 +11,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createMessage, getAllChats } from '../../Redux/Message/message.action';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import { uploadToCloudnary } from '../../utils/uploadToCloudnary';
+import SockJS from 'sockjs-client';
+import Stom from 'stompjs';
+
+
+
+
+
+
 
 export const Message = () => {
   const dispatch = useDispatch();
@@ -50,6 +58,15 @@ export const Message = () => {
     setMessages([...messages, message.message])
 
   }, [message.message])
+
+  const [stompClient,setStompClient]=useState(null);
+  
+  useEffect(()=>{
+    const sock=new SockJS("http://localhost:9545/ws")
+    const stomp=Stom.over(sock);
+    setStompClient(stomp);
+
+  },[])
 
 
   return (
