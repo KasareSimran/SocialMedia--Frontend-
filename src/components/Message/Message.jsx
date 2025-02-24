@@ -1,5 +1,5 @@
 import { Avatar, Grid, IconButton } from '@mui/material'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import WestIcon from '@mui/icons-material/West';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
@@ -9,19 +9,36 @@ import { UserChatCard } from './UserChatCard';
 import { ChatMessage } from './ChatMessage';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllChats } from '../../Redux/Message/message.action';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 
 export const Message = () => {
   const dispatch=useDispatch();
   const {message,auth}=useSelector(store=>store);
+  const [currentChat,setCurrentChat]=useState();
+  const [messages,setMessages]=useState();
+  const [selectedImage,setSelectedImage]=useState();
 
   useEffect(()=>{
     dispatch(getAllChats())
 
   },[])
 
+  console.log("chats.....",message.chats)
+
   const handleSelectImgae=()=>{
     console.log("hande select image...")
   }
+
+  const handleCreateMessage=(value)=>{
+    const message={
+      chatId:currentChat.id,
+      content:value,
+      image:selectedImage
+    }
+  }
+
+
+
   return (
     <div>
       <Grid container className='h-screen overflow-y-hidden'>
@@ -42,7 +59,15 @@ export const Message = () => {
 
               <div className='h-full space-y-4 mt-5 overflow-y-scroll hideScrollbar'>
                 {
-                  message.chats.map((item)=><UserChatCard chat={item}/>)
+                  message.chats.map((item)=> {
+                   return <div onClick={()=>{
+                      setCurrentChat(item);
+                      setMessages(item.messages);
+                    }}>
+                      <UserChatCard chat={item}/>
+                      </div>
+
+                  })
                 }
              
               </div>
@@ -53,11 +78,12 @@ export const Message = () => {
           </div>
         </Grid>
         <Grid className='h-full' item xs={9}>
-          <div>
+          {currentChat?<div>
             <div className='flex justify-between items-center border border-gray-300 p-5'>
               <div className='flex items-center space-x-3'>
                 <Avatar src='https://cdn.pixabay.com/photo/2022/02/13/11/26/grass-7010936_1280.jpg'/>
-                <p>Simran Kasare</p>
+                <p>{auth.user.id===currentChat.users[0].id?currentChat.users[1].firstName+" "+currentChat.users[1].lastName
+        :currentChat.users[0].firstName+" "+currentChat.users[0].lastName}</p>
 
               </div>
               <div className='flex space-x-3 '>
@@ -75,9 +101,7 @@ export const Message = () => {
             <div className='hideScrollbar overflow-y-scroll h-[82vh] px-2 space-y-5 py-5'>
               <ChatMessage/>
             </div>
-          </div>
-
-          <div className='sticky bottom-0 border border-gray-300'>
+            <div className='sticky bottom-0 border border-gray-300'>
            
            <div className='py-5 flex items-center justify-center space-x-5'>
             <input className='bg-transparent boorder border-[#3b40544] rounded-full w-[90%] py-3 px-5' placeholder='Type message...' type='text'/>
@@ -95,6 +119,15 @@ export const Message = () => {
            </div>
 
           </div>
+          </div>:
+          <div className='h-full space-y-5 flex flex-col justify-center items-center'>
+            <ChatBubbleOutlineIcon sx={{fontSize:"15rem "}}/>
+            <p className='text-xl fonr-semibold'>No Chat Selected</p>
+
+          </div>
+          }
+
+
         </Grid>
       </Grid>
     </div>
