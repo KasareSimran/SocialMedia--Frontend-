@@ -4,7 +4,7 @@ import { createTheme } from "@mui/material";
     palette:{
         mode:"dark",
         primary:{
-            main:"rgb(88,99,250)"
+            main:"rgb(88, 207, 250)"
         },
         secondary:{
             main:"#5A20CB"

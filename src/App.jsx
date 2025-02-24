@@ -7,6 +7,10 @@ import { Home } from './components/HomePage/Home'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getProfileAction } from './Redux/Auth/auth.action'
+import { ThemeProvider } from '@mui/material'
+import { darkTheme } from './theme/DarkTheme'
+
+
 
 
 function App() {
@@ -19,7 +23,7 @@ function App() {
  
   
   return (
-    <>
+    <ThemeProvider theme={darkTheme}>
     <Routes>
       <Route path='/*' element={auth.user?<Home/>:<Authentication/>}/>
       <Route path='/message' element={<Message/>}/>
@@ -27,7 +31,7 @@ function App() {
 
     </Routes>
 
-    </>
+    </ThemeProvider>
   )
 }
 
