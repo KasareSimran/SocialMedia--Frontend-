@@ -1,5 +1,5 @@
 import { Avatar, Backdrop, CircularProgress, Grid, IconButton } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import WestIcon from '@mui/icons-material/West';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
@@ -31,6 +31,7 @@ export const Message = () => {
   const [selectedImage, setSelectedImage] = useState();
   const [loading, setLoading] = useState(false);
   const [messageInput, setMessageInput] = useState("");
+  const chatContainerRef=useRef(null);
 
   useEffect(() => {
     dispatch(getAllChats())
@@ -57,10 +58,10 @@ export const Message = () => {
   }
 
 
-  useEffect(() => {
-    setMessages([...messages, message.message])
+  // useEffect(() => {
+  //   setMessages([...messages, message.message])
 
-  }, [message.message])
+  // }, [message.message])
 
   const [stompClient,setStompClient]=useState(null);
   
@@ -87,19 +88,29 @@ export const Message = () => {
         onMessageReceive
       );
     }
-  })
+  },[stompClient, auth.user, currentChat])
 
   const sendMessageToServer=( newMessage)=>{
     if(stompClient && newMessage){
-      stompClient.send(`/app/chat/${currentChat?.id.toString()}`,{},JSON.stringify(message))    //JSON.stringify-convert msg to string
+      stompClient.send(`/app/chat/${currentChat?.id.toString()}`,{},JSON.stringify(newMessage))    //JSON.stringify-convert msg to string
     }
   }
 
 
-  const onMessageReceive=(message)=>{
-    console.log("message receive from websocket..",message)
+  const onMessageReceive=(payload)=>{
+  
+    const recivedMessage=JSON.parse(payload.body)
+    console.log("message receive from websocket..",recivedMessage)
+    setMessages((prevMessages) => [...prevMessages, recivedMessage]);
 
   }
+
+
+  useEffect(()=>{
+    if(chatContainerRef.current){
+      chatContainerRef.current.scrollTop=chatContainerRef.current.scrollHeight
+    }
+  },[messages])
 
   return (
     <div>
@@ -160,7 +171,7 @@ export const Message = () => {
 
             </div>
 
-            <div className='hideScrollbar overflow-y-scroll h-[82vh] px-2 space-y-5 py-5'>
+            <div ref={chatContainerRef} className='hideScrollbar overflow-y-scroll h-[82vh] px-2 space-y-5 py-5'>
               {messages.map((item) => <ChatMessage item={item} />)}
             </div>
             <div className='sticky bottom-0 border border-gray-300'>
