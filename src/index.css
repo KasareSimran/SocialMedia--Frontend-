@@ -67,9 +67,9 @@ button:focus-visible {
   }
 } */
 
-/* body {
-  overflow: hidden;
-} */
+body {
+   background-color: #212534;
+}
 
 
 .hideScrollBar::-webkit-scrollbar{
