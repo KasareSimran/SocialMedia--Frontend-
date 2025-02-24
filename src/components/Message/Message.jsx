@@ -53,7 +53,7 @@ export const Message = () => {
       content: value,
       image: selectedImage
     };
-    dispatch(createMessage(message))
+    dispatch(createMessage({message,sendMessageToServer}))
   }
 
 
@@ -62,12 +62,12 @@ export const Message = () => {
 
   }, [message.message])
 
-  const [stomClient,setStomClient]=useState(null);
+  const [stompClient,setStompClient]=useState(null);
   
   useEffect(()=>{
     const sock=new SockJS("http://localhost:9545/ws")
     const stomp=Stom.over(sock);
-    setStomClient(stomp);
+    setStompClient(stomp);
 
     stomp.connect({},onConnect,onErr)
 
@@ -81,6 +81,25 @@ export const Message = () => {
     console.log("errorr...",error)
   }
 
+  useEffect(()=>{
+    if(stompClient && auth.user  && currentChat){
+      const subscription=stompClient.subscribe(`/user/${currentChat.id}/private`,
+        onMessageReceive
+      );
+    }
+  })
+
+  const sendMessageToServer=( newMessage)=>{
+    if(stompClient && newMessage){
+      stompClient.send(`/app/chat/${currentChat?.id.toString()}`,{},JSON.stringify(message))    //JSON.stringify-convert msg to string
+    }
+  }
+
+
+  const onMessageReceive=(message)=>{
+    console.log("message receive from websocket..",message)
+
+  }
 
   return (
     <div>

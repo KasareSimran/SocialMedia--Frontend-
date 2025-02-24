@@ -2,10 +2,12 @@ import { api } from "../../config/api"
 import { CREATE_CHAT_REQUEST, CREATE_MESSAGE_FAILURE, CREATE_MESSAGE_REQUEST, CREATE_MESSAGE_SUCCESS,CREATE_CHAT_FAILURE,CREATE_CHAT_SUCCESS, GET_ALL_CHATS_REQUEST, GET_ALL_CHATS_SUCCESS, GET_ALL_CHATS_FAILURE } from "./message.actionType"
 
 
-export const createMessage=(message)=>async(dispatch)=>{
+export const createMessage=(reqData)=>async(dispatch)=>{
     dispatch({type:CREATE_MESSAGE_REQUEST})
     try{
-        const {data}=await api.post(`api/messages/chat/${message.chatId}`,message);
+        const {data}=await api.post(`api/messages/chat/${reqData.message.chatId}`,reqData.message);
+
+        reqData.sendMessageToServer(data)
 
         console.log("created message ",data)
 
