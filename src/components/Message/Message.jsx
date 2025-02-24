@@ -22,7 +22,10 @@ import Stom from 'stompjs';
 
 export const Message = () => {
   const dispatch = useDispatch();
-  const { message, auth } = useSelector(store => store);
+  const { message, auth } = useSelector(state => ({
+    message: state.message,
+    auth: state.auth
+  }));
   const [currentChat, setCurrentChat] = useState();
   const [messages, setMessages] = useState([]);
   const [selectedImage, setSelectedImage] = useState();
@@ -59,14 +62,24 @@ export const Message = () => {
 
   }, [message.message])
 
-  const [stompClient,setStompClient]=useState(null);
+  const [stomClient,setStomClient]=useState(null);
   
   useEffect(()=>{
     const sock=new SockJS("http://localhost:9545/ws")
     const stomp=Stom.over(sock);
-    setStompClient(stomp);
+    setStomClient(stomp);
+
+    stomp.connect({},onConnect,onErr)
 
   },[])
+
+  const onConnect=()=>{
+    console.log("websocket Connected...")
+  }
+
+  const onErr=(error)=>{
+    console.log("errorr...",error)
+  }
 
 
   return (

@@ -6,7 +6,10 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 
 export const UserChatCard = ({chat}) => {
-    const {message,auth}=useSelector(store=>store)
+     const { message, auth } = useSelector(state => ({
+        message: state.message,
+        auth: state.auth
+      }));
   return (
     <Card>
             <CardHeader 
